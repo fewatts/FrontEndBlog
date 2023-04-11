@@ -1,7 +1,12 @@
 function NavBar(){
     return(
         <div className="navbar">
-            <h1>Ich heiBe Fernando, freut mich sehr!!</h1>
+            {/* <ul>
+                <li>opção 1</li>
+                <li>opção 2</li>
+                <li>opção 3</li>
+                <li>opção 4</li>
+            </ul> */}
         </div>
     )
 }
