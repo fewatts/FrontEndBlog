@@ -1,23 +1,6 @@
-/* Paletas utilizadas */
-:root {
-    --background: #F4F4F9;
-    --verde: #96AC64;
-    --marrom: #946846;
-    --preto: #171818;
-    --azul: #275DAD;
-  }
-.titulo{
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    color: var(--background);
-    text-align: center;
-    background-color:var(--preto);
-}
-.imgdiv{
-    background-color: var(--azul);
-}
-.img{
-    width: 450;
-    height: 450;
-    display:block;
+.fthome{
+    width: max(350px, 70%);
     margin: 0 auto;
+    display: block;
+    /* transform: rotateY(180deg); */
 }

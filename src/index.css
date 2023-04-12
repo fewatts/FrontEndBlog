@@ -49,9 +49,10 @@ a {
 }
 /* Paletas utilizadas */
 :root {
-  --background: #F4F4F9;
-  --verde: #96AC64;
-  --marrom: #946846;
-  --preto: #171818;
-  --azul: #275DAD;
+  --background: #FA9F42;
+  --white: #E0E0E2;
+  --green: #0B6E4F;
+  --blue: #2B4162;
+  --red: #721817;
+  
 }
