@@ -13,7 +13,6 @@ function NavBar(){
                   <strong>Blog DJ's</strong>
                 </Typography>
               </Box>
-  
               <Box display="flex" justifyContent="start">
                 <Box mx={1} style={{ cursor: 'pointer' }}>
                   <Typography variant="h6" color="inherit">
