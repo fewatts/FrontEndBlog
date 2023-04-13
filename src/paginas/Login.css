@@ -1,9 +1,13 @@
 .imglogin{
     background-image: url('https://i.imgur.com/uykHGaG.png');
-    min-height: 80vh;
-    background-size: 94%;
+    min-height: 95vh;
+    margin: 0 auto;
+    background-size: 92%;
+    background-repeat: no-repeat;
+
+    /* background-size: 94%;
     background-repeat: no-repeat;
     width: max(350px, 70%);
     margin: 0 auto;
-    display: block;
+    display: block; */
 }

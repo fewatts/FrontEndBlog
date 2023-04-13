@@ -25,7 +25,7 @@ function Login(){
 
                             <Link to='/home'><Button variant="outlined" 
                             style={{ borderColor: 'white', backgroundColor: 'var(--blue)', color: 'white' }}>
-                                Logar
+                                Login
                             </Button></Link>
                         </form>
                     </Box>

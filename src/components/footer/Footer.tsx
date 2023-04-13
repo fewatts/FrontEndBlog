@@ -27,7 +27,7 @@ function Footer() {
                             <Typography variant="subtitle2" align="center" gutterBottom style={{ color: "white" }} >© 2023 Copyright:</Typography>
                         </Box>
                         <Box>
-                            <a target="_blank" href="https://brasil.generation.org">
+                            <a target="_blank" href="https://soundcloud.com/user-831177117/02-1-2a?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing">
                                 <Typography variant="subtitle2" gutterBottom style={{ color: "white" }} align="center">Fernando Alves</Typography>
                             </a>
                         </Box>
