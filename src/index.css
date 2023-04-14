@@ -8,11 +8,11 @@
 }
 * {
   margin: 0;
+  font-family: 'Lilita One', cursive !important;
 }
 html,
 body {
   height: 100%;
-  font-family: 'Lilita One', cursive !important;
 }
 body {
   line-height: 1.5;
