@@ -1,5 +1,6 @@
 /* Reset Completo CSS */
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;700&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;700&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro&family=Literata');
 *,
 *::before,
 *::after {
@@ -11,6 +12,7 @@
 html,
 body {
   height: 100%;
+  font-family: 'Lilita One', cursive !important;
 }
 body {
   line-height: 1.5;

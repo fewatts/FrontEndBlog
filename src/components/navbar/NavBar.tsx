@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 function NavBar(){
     return(
         <>
-        <AppBar position="static" style={{background: 'var(--background)'}}>
+        <AppBar position="static" style={{background: 'var(--background)'}} className='navbar'>
           <Toolbar variant="dense" >
             <Box display={'flex'} justifyContent={'space-between'} width={'100%'} >
               <Box style={{ cursor: 'pointer' }}>
