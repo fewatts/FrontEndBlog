@@ -1,14 +1,17 @@
 import './Login.css';
 import { Button, Grid, TextField, Typography } from '@material-ui/core';
 import { Box } from '@mui/material';
-import { ChangeEvent, useState } from 'react';
+import React, { ChangeEvent, useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import UsuarioLogin from '../../models/UsuarioLogin';
 import { login } from '../../service/Service';
+import useLocalStorage from 'react-use-localstorage'
 
 function Login() {
 
     const history = useNavigate()
+
+    const [token, setToken] = useLocalStorage('token')
 
     const [userLogin, setUserLogin] = useState<UsuarioLogin>({
         id: 0,
@@ -39,6 +42,12 @@ function Login() {
         }
 
     }
+
+    useEffect(() => {
+        if (token != '') {
+            history('/home')
+        }
+    }, [token])
 
     return (
         <>
@@ -85,7 +94,7 @@ function Login() {
                     </Box>
                     <hr />
                     <Typography
-                        align='center' 
+                        align='center'
                         variant="body1"
                     >Ainda não tem uma conta? <Link to='/cadastrousuario' className='linklogin'>Cadastre-se aqui</Link></Typography>
                 </Grid>
