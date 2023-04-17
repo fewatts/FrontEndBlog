@@ -1,13 +1,12 @@
-.imglogin{
+.imgcad{
     background-image: url('https://i.imgur.com/uykHGaG.png');
     min-height: 95vh;
     margin: 0 auto;
     background-size: 92%;
     background-repeat: no-repeat;
+    /* transform: rotateY(180deg); */
+}
 
-    /* background-size: 94%;
-    background-repeat: no-repeat;
-    width: max(350px, 70%);
-    margin: 0 auto;
-    display: block; */
+.containercad{
+    background-color: var(--white) !important;
 }

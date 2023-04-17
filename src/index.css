@@ -1,23 +1,30 @@
 /* Reset Completo CSS */
-/* @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;700&display=swap'); */
-@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro&family=Literata');
+/* @import url('https://fonts.googleapis.com/css2?family=Crimson+Pro&family=Literata'); */
+/* @import url('https://fonts.googleapis.com/css2?family=Chivo+Mono:wght@300&family=Dancing+Script:wght@700&family=Inter:wght@300&family=Lilita+One&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Chivo+Mono:wght@300&family=Dancing+Script:wght@700&family=Inter:wght@300&family=Lilita+One&family=Orbitron&display=swap');
+
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
+
 * {
   margin: 0;
-  font-family: 'Lilita One', cursive !important;
+  font-family: 'Inter', sans-serif !important;
+  /* font-family: 'Orbitron', sans-serif !important; */
 }
+
 html,
 body {
   height: 100%;
 }
+
 body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
 }
+
 img,
 picture,
 video,
@@ -26,12 +33,14 @@ svg {
   display: block;
   max-width: 100%;
 }
+
 input,
 button,
 textarea,
 select {
   font: inherit;
 }
+
 p,
 h1,
 h2,
@@ -41,14 +50,17 @@ h5,
 h6 {
   overflow-wrap: break-word;
 }
+
 #root,
 #__next {
   isolation: isolate;
 }
+
 a {
   color: inherit;
   text-decoration: none;
 }
+
 /* Paletas utilizadas */
 :root {
   --background: #FA9F42;
@@ -56,5 +68,5 @@ a {
   --green: #0B6E4F;
   --blue: #2B4162;
   --red: #721817;
-  
+
 }

@@ -4,14 +4,14 @@ import { Box } from '@mui/material';
 import './Home.css';
 
 function Home() {
-    return (
-      <>
+  return (
+    <>
       <Grid
         container
         direction="row"
         justifyContent="center"
         alignItems="center"
-        style={{ backgroundColor: 'var(--blue)' }}
+        className='caixa'
       >
         <Grid item xs={6}>
           <img
@@ -28,9 +28,10 @@ function Home() {
               color="textPrimary"
               component="p"
               align="center"
-              style={{ color: 'white', fontWeight: 'bold' }}
-            >
+              className='titulo'>
+
               Seja bem vinde!
+
             </Typography>
             <Typography
               variant="h5"
@@ -38,29 +39,27 @@ function Home() {
               color="textPrimary"
               component="h5"
               align="center"
-              style={{ color: 'white', fontWeight: 'bold' }}
-            >
+              className='titulo'>
+
               Poste suas experiências com a música e mixagem aqui!
+
             </Typography>
           </Box>
           <Box display="flex" justifyContent="center">
             <Box marginRight={1}></Box>
             <Button
               variant="outlined"
-              style={{
-                borderColor: 'white',
-                backgroundColor: 'var(--blue)',
-                color: 'white',
-              }}
-            >
+              className='botao'>
+
               Ver Postagens
+
             </Button>
           </Box>
         </Grid>
         <Grid xs={12} style={{ backgroundColor: 'white' }}></Grid>
       </Grid>
     </>
-    );
-  }  
+  );
+}
 
 export default Home;

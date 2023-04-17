@@ -1,3 +1,4 @@
-.navbar{
-    font-family: 'Times New Roman', Times, serif !important;
+.cursor {
+    cursor: pointer;
+    color: white;
 }

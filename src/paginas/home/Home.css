@@ -1,0 +1,25 @@
+.caixa {
+    background-color: var(--blue);
+}
+
+.titulo {
+    color: white !important;
+    font-weight: bold !important;
+}
+
+.botao {
+    border-color: white !important;
+    background-color: 'var(--blue)';
+    color: white !important;
+}
+
+.fthome {
+    width: max(350px, 90%);
+    margin: 0 auto;
+    display: block;
+    /* transform: rotateY(180deg); */
+}
+
+.postagen {
+    background-color: white;
+}

@@ -1,0 +1,26 @@
+.imglogin{
+    background-image: url('https://i.imgur.com/uykHGaG.png');
+    min-height: 95vh;
+    margin: 0 auto;
+    background-size: 92%;
+    background-repeat: no-repeat;
+}
+
+.textos1{
+    font-weight: bold !important;
+    color:white !important;
+    font-weight: bold !important; 
+    background-color: var(--blue) !important; 
+}
+
+.botaolog{
+    border-color: white !important;
+    background-color: var(--blue) !important; 
+    color: white !important;
+    font-weight: bold !important;
+}
+
+.linkLogin {
+    text-decoration: underline;
+    color: var(--blue-600)
+  }
