@@ -1,6 +1,7 @@
 import { Tema } from "./Tema";
 
 export interface Postagem {
+  link: ReactNode;
   id: number;
   titulo: string;
   texto: string;

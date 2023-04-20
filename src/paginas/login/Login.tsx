@@ -33,7 +33,7 @@ function Login() {
     async function onSubmit(event: ChangeEvent<HTMLFormElement>) {
         event.preventDefault()
         try {
-            await login('/usuarios/logar', userLogin, setUserLogin);
+            await login('/usuarios/logar', userLogin, setToken);
             alert('Login efetuado com sucesso!')
             history('/home')
         } catch (error) {
