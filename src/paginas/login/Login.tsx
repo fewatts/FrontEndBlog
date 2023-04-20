@@ -44,7 +44,7 @@ function Login() {
     }
 
     useEffect(() => {
-        if (token != '') {
+        if (token !== '') {
             history('/home')
         }
     }, [token])

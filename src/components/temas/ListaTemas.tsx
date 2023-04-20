@@ -1,28 +1,58 @@
-import React from 'react';
-import { AppBar, Toolbar, Typography, Button, Card, CardContent, CardActions } from '@material-ui/core';
+import React, { useEffect, useState } from 'react';
+import { Typography, Button, Card, CardContent, CardActions } from '@material-ui/core';
 import { Box } from '@mui/material';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './ListaTemas.css'
+import useLocalStorage from 'react-use-localstorage';
+import { getAll } from '../../service/Service';
+import { Tema } from '../../models/Tema';
 
 function ListaTemas() {
+
+    const [temas, setTemas] = useState<Tema[]>([])
+    const [token, setToken] = useLocalStorage('token')
+    const navigate = useNavigate()
+
+    async function getAllTemas() {
+        await getAll('/temas', setTemas, {
+            headers: {
+                Authorization: token
+            }
+        })
+    }
+
+    useEffect(() => {
+        getAllTemas()
+    }, [])
+
+    useEffect(() => {
+        if (token === '') {
+            alert('Não autorizado!')
+            navigate('/login')
+        }
+    }, [])
+
+
     return (
         <>
-            <Box m={2}>
-                <Card variant='outlined'>
-                    <CardContent>
-                        <Typography color="inherit" gutterBottom>
-                            Tema:
-                        </Typography>
-                        <Typography variant='h5' component='h2'>
-                            Descrição do tema
-                        </Typography>
-                    </CardContent>
-                    <CardActions>
-                        <Button variant='contained' style={{backgroundColor: 'var(--blue)'}} size='small' className='bottem'>Editar</Button>
-                        <Button color='secondary' style={{backgroundColor: 'var(--red)'}} variant='contained' size='small'>Deletar</Button>
-                    </CardActions>
-                </Card>
-            </Box>
+            {temas.map((tema) => (
+                <Box m={4}>
+                    <Card variant='outlined'>
+                        <CardContent>
+                            <Typography color="inherit" gutterBottom>
+                                Tema:
+                            </Typography>
+                            <Typography variant='h5' component='h2'>
+                                {tema.descricao}
+                            </Typography>
+                        </CardContent>
+                        <CardActions>
+                            <Button variant='contained' style={{ backgroundColor: 'var(--blue)' }} size='small' className='bottem'>Editar</Button>
+                            <Button color='secondary' style={{ backgroundColor: 'var(--red)' }} variant='contained' size='small'>Deletar</Button>
+                        </CardActions>
+                    </Card>
+                </Box>
+            ))}
         </>
     );
 }

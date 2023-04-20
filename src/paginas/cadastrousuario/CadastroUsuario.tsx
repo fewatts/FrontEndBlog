@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './Cadastrousuario.css';
 import { Button, Grid, TextField, Typography } from '@material-ui/core';
 import { Box } from '@mui/material';
 import { ChangeEvent, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { Usuario } from '../../models/Usuario';
 import { cadastrarUsuario } from '../../service/Service';
@@ -11,7 +11,7 @@ import './Cadastrousuario.css';
 
 function CadastroUsuario() {
 
-    const navegate = useNavigate;
+    const navigate = useNavigate();
 
     const [usuario, setUsuario] = useState<Usuario>({
         id: 0,
@@ -60,6 +60,12 @@ function CadastroUsuario() {
             })
         }
     }
+
+    useEffect(() => {
+        if(usuario.id !== 0){
+            navigate("/login")
+        }
+    }, [usuario.id])
 
     return (
         <>

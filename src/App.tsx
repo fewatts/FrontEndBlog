@@ -7,6 +7,7 @@ import Login from './paginas/login/Login';
 import { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import CadastroUsuario from './paginas/cadastrousuario/CadastroUsuario';
+import CadastroTema from './components/temas/CadastroTema'
 import './App.css';
 
 
@@ -25,6 +26,7 @@ function App() {
           <Route path='/home' element={<Home />} />
           <Route path='/temas' element={<ListaTemas />} />
           <Route path='/postagens' element={<ListaPostagens />} />
+          <Route path='/cadastrarTema' element={<CadastroTema />} />
         </Routes>
       </div>
       <Footer />

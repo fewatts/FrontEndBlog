@@ -25,9 +25,9 @@ function NavBar() {
               </Box>
               <Box mx={1} className='cursor'>
                 <Link to='/postagens'>
-                <Typography variant="h6" color="inherit">
-                  postagens
-                </Typography>
+                  <Typography variant="h6" color="inherit">
+                    postagens
+                  </Typography>
                 </Link>
               </Box>
               <Box mx={1} className='cursor'>
@@ -38,9 +38,11 @@ function NavBar() {
                 </Link>
               </Box>
               <Box mx={1} className='cursor'>
-                <Typography variant="h6" color="inherit">
-                  cadastrar tema
-                </Typography>
+                <Link to='/cadastrarTema'>
+                  <Typography variant="h6" color="inherit">
+                    cadastrar tema
+                  </Typography>
+                </Link>
               </Box>
               <Box mx={1} className='cursor'>
                 <Link to='/'><Button variant="outlined" color="inherit" size="small">
