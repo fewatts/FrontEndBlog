@@ -13,7 +13,7 @@ function ListaPostagens() {
     const [token, setToken] = useLocalStorage('token')
     const navigate = useNavigate()
 
-    async function getAllPostagens() {
+    async function ListaPostagem() {
         await getAll('/postagens', setPostagens, {
             headers: {
                 Authorization: token
@@ -22,7 +22,7 @@ function ListaPostagens() {
     }
 
     useEffect(() => {
-        getAllPostagens()
+        ListaPostagem()
     }, [])
 
     const [temas, setTemas] = useState<Tema[]>([])
