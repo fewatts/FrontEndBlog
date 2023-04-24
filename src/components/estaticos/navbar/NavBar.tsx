@@ -6,6 +6,16 @@ import './NavBar.css';
 import useLocalStorage from 'react-use-localstorage';
 
 function NavBar() {
+
+  const [token, setToken] = useLocalStorage('token');
+  const navigate = useNavigate();
+
+  function logout() {
+    setToken('');
+    alert('Logout concluído!')
+    navigate('/login')
+  }
+
   return (
     <>
       <AppBar position="static" style={{ background: 'var(--background)' }} className='navbar'>
@@ -48,11 +58,11 @@ function NavBar() {
                 </Link>
               </Box>
               <Box mx={1} className='cursor'>
-                <Link to='/'><Button variant="outlined" color="inherit" size="small">
+                <Button variant="outlined" color="inherit" size="small" onClick={logout}>
                   <Typography color="inherit">
                     logout
                   </Typography>
-                </Button></Link>
+                </Button>
               </Box>
             </Box>
           </Box>

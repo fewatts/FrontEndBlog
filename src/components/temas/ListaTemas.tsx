@@ -9,28 +9,28 @@ import { Tema } from '../../models/Tema';
 
 function ListaTemas() {
 
-    const [temas, setTemas] = useState<Tema[]>([])
-    const [token, setToken] = useLocalStorage('token')
-    const navigate = useNavigate()
+    const [temas, setTemas] = useState<Tema[]>([]);
+    const [token, setToken] = useLocalStorage('token');
+    const history = useNavigate();
 
     async function getAllTemas() {
         await getAll('/temas', setTemas, {
             headers: {
-                Authorization: token
-            }
-        })
+                Authorization: token,
+            },
+        });
     }
 
     useEffect(() => {
-        getAllTemas()
-    }, [])
+        getAllTemas();
+    }, [temas.length]);
 
     useEffect(() => {
         if (token === '') {
-            alert('Não autorizado!')
-            navigate('/login')
+            alert('Não autorizado!');
+            history('/login');
         }
-    }, [])
+    }, [token]);
 
 
     return (
@@ -59,7 +59,9 @@ function ListaTemas() {
                             </Typography>
                         </CardContent>
                         <CardActions>
-                            <Button variant='contained' style={{ backgroundColor: 'var(--blue)' }} size='small' className='bottem'>Editar</Button>
+                            <Link to={`/editarTema/${tema.id}`}>
+                                <Button variant='contained' style={{ backgroundColor: 'var(--blue)' }} size='small' className='bottem'>Editar</Button>
+                            </Link>
                             <Button color='secondary' style={{ backgroundColor: 'var(--red)' }} variant='contained' size='small'>Deletar</Button>
                         </CardActions>
                     </Card>

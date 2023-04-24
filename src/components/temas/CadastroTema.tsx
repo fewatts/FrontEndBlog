@@ -41,7 +41,7 @@ function CadastroTema() {
 
   useEffect(() => {
     if (token === '') {
-      alert('Sem token não né meu bom');
+      alert('Não autorizado!');
       history('/login');
     }
   }, []);
@@ -59,7 +59,7 @@ function CadastroTema() {
         alert('Tema atualizado com sucesso');
         history('/temas')
       } catch (error) {
-        alert('Deu ruim');
+        alert('ERROR');
       }
     } else {
       try {
@@ -71,11 +71,10 @@ function CadastroTema() {
         alert('Tema cadastrado com sucesso');
         history('/temas')
       } catch (error) {
-        alert('Deu ruim');
+        alert('ERROR');
       }
     }
   }
-
 
   return (
     <>
@@ -94,6 +93,7 @@ function CadastroTema() {
                 color="textPrimary"
                 component="h5"
                 align="center"
+                className='textos1'
               >
                 <strong>{tema.id !== 0 ? 'Editar tema' : 'Cadastrar tema'}</strong>
               </Typography>
@@ -106,20 +106,22 @@ function CadastroTema() {
               />
 
               <Button
-                disabled={tema.descricao.length > 3}
+                disabled={tema.descricao.length < 3}
                 type='submit'
                 size='medium'
                 variant='contained'
-                style={{ backgroundColor: 'var(--blue)' }}
-              >
+                style={{ backgroundColor: 'var(--blue)' }}>
                 {tema.id !== 0 ? 'Editar' : 'Cadastrar'}
               </Button>
-              <Button
-                type='submit'
-                size='medium'
-                variant='contained'
-                style={{ backgroundColor: 'var(--red)' }}
-              >Deletar</Button>
+              <Link to='/temas'>
+                <Button
+                  type='submit'
+                  size='medium'
+                  variant='contained'
+                  fullWidth
+                  style={{ backgroundColor: 'var(--red)' }}
+                >Cancelar</Button>
+              </Link>
             </Box>
           </form>
         </Card>
