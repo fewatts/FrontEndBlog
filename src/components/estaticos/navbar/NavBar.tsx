@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { AppBar, Toolbar, Typography, Button } from '@material-ui/core';
 import { Box } from '@mui/material';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './NavBar.css';
+import useLocalStorage from 'react-use-localstorage';
 
 function NavBar() {
   return (
@@ -11,9 +12,11 @@ function NavBar() {
         <Toolbar variant="dense" >
           <Box display={'flex'} justifyContent={'space-between'} width={'100%'} >
             <Box className='cursor'>
-              <Typography variant="h5" color="inherit">
-                <strong>Blog DJ's</strong>
-              </Typography>
+              <Link to='/home'>
+                <Typography variant="h5" color="inherit">
+                  <strong>Blog DJ's</strong>
+                </Typography>
+              </Link>
             </Box>
             <Box display="flex" justifyContent="start">
               <Box mx={1} className='cursor'>

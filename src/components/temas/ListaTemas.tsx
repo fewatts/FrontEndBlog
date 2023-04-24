@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Typography, Button, Card, CardContent, CardActions } from '@material-ui/core';
+import { Typography, Button, Card, CardContent, CardActions, Grid, CircularProgress } from '@material-ui/core';
 import { Box } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
 import './ListaTemas.css'
@@ -35,6 +35,18 @@ function ListaTemas() {
 
     return (
         <>
+            {temas.length === 0 && (
+                <Grid container
+                    spacing={0}
+                    direction="column"
+                    alignItems="center"
+                    justify="center"
+                    style={{ minHeight: '30vh' }}>
+                    <Box sx={{ display: 'flex' }} flexDirection={'column'} alignSelf={'center'}>
+                        <CircularProgress />
+                    </Box>
+                </Grid>
+            )}
             {temas.map((tema) => (
                 <Box m={4}>
                     <Card variant='outlined'>

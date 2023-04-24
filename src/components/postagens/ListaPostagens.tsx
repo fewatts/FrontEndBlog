@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { AppBar, Toolbar, Typography, Button, Card, CardContent, CardActions } from '@material-ui/core';
+import { AppBar, Toolbar, Typography, Button, Card, CardContent, CardActions, CircularProgress, Grid } from '@material-ui/core';
 import { Box } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
 import { Postagem } from '../../models/Postagem';
@@ -48,6 +48,18 @@ function ListaPostagens() {
 
     return (
         <>
+            {postagens.length === 0 && (
+                <Grid container
+                    spacing={0}
+                    direction="column"
+                    alignItems="center"
+                    justify="center"
+                    style={{ minHeight: '30vh' }}>
+                    <Box sx={{ display: 'flex' }} >
+                        <CircularProgress />
+                    </Box>
+                </Grid>
+            )}
             {postagens.map((postagem) => (
                 <Box m={2}>
                     <Card variant='outlined'>
