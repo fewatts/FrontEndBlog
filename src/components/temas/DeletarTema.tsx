@@ -37,6 +37,7 @@ function DeletarTema() {
     }, []);
 
     function sim() {
+        alert('Tema excluído!')
         history('/temas')
         deleteId(`/temas/${id}`, {
             headers: {

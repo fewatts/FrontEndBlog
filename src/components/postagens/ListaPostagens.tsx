@@ -68,7 +68,7 @@ function ListaPostagens() {
                                 <strong>{postagem.titulo}</strong>
                             </Typography>
                             <Typography variant='h5' component='p'>
-                                {postagem.tema.descricao}
+                                {postagem.tema?.descricao}
                             </Typography>
                             <Typography variant='body1' component='p'>
                                 {postagem.texto}
@@ -78,8 +78,13 @@ function ListaPostagens() {
                             </Typography>
                         </CardContent>
                         <CardActions>
-                            <Button variant='contained' style={{ backgroundColor: 'var(--blue)' }} size='small' className='bottem'>Editar</Button>
-                            <Button color='secondary' style={{ backgroundColor: 'var(--red)' }} variant='contained' size='small'>Deletar</Button>
+                            <Link to={`/editarPostagem/${postagem.id}`}>
+                                <Button variant='contained' style={{ backgroundColor: 'var(--blue)' }} size='small' className='bottem'>Editar</Button>
+                            </Link>
+                            <Link to={`/deletarPostagem/${postagem.id}`}>
+                                <Button color='secondary' style={{ backgroundColor: 'var(--red)' }} variant='contained' size='small'>Deletar</Button>
+
+                            </Link>
                         </CardActions>
                     </Card>
                 </Box>

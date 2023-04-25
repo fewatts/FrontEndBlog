@@ -18,6 +18,10 @@ function Home() {
     }
   }, [])
 
+  function postar() {
+    navigate('/cadastrarPostagem')
+  }
+
   return (
     <>
       <Grid
@@ -62,6 +66,7 @@ function Home() {
           <Box display="flex" justifyContent="center">
             <Box marginRight={1} display={'flex'} flexDirection={'column'} gap={1}>
               <Button
+                onClick={postar}
                 variant="outlined"
                 className='botao'>
                 Postar

@@ -1,10 +1,10 @@
 import { Tema } from "./Tema";
 
 export interface Postagem {
-  link: ReactNode;
+  link: string;
   id: number;
   titulo: string;
   texto: string;
   data: string;
-  tema: Tema
+  tema: Tema | null;
 }
