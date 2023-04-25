@@ -37,7 +37,7 @@ function CadastroTema() {
     if (id !== undefined) {
       getTemaById(id)
     }
-  })
+  }, [id])
 
   useEffect(() => {
     if (token === '') {
