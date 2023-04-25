@@ -6,6 +6,7 @@ import './ListaTemas.css'
 import useLocalStorage from 'react-use-localstorage';
 import { getAll } from '../../service/Service';
 import { Tema } from '../../models/Tema';
+import DeletarTema from './DeletarTema';
 
 function ListaTemas() {
 
@@ -62,7 +63,9 @@ function ListaTemas() {
                             <Link to={`/editarTema/${tema.id}`}>
                                 <Button variant='contained' style={{ backgroundColor: 'var(--blue)' }} size='small' className='bottem'>Editar</Button>
                             </Link>
-                            <Button color='secondary' style={{ backgroundColor: 'var(--red)' }} variant='contained' size='small'>Deletar</Button>
+                            <Link to={`/deletarTema/${tema.id}`}>
+                                <Button color='secondary' style={{ backgroundColor: 'var(--red)' }} variant='contained' size='small'>Deletar</Button>
+                            </Link>
                         </CardActions>
                     </Card>
                 </Box>

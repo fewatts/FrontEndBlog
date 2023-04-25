@@ -7,7 +7,8 @@ import Login from './paginas/login/Login';
 import { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import CadastroUsuario from './paginas/cadastrousuario/CadastroUsuario';
-import CadastroTema from './components/temas/CadastroTema'
+import CadastroTema from './components/temas/CadastroTema';
+import DeletarTema from './components/temas/DeletarTema';
 import './App.css';
 
 
@@ -28,7 +29,7 @@ function App() {
           <Route path='/postagens' element={<ListaPostagens />} />
           <Route path='/cadastrarTema' element={<CadastroTema />} />
           <Route path='/editarTema/:id' element={<CadastroTema />} />
-          {/* <Route path='/deletarTema/:id' element={<DeletarTema />} />  */}
+          <Route path='/deletarTema/:id' element={<DeletarTema />} /> 
         </Routes>
       </div>
       <Footer />
