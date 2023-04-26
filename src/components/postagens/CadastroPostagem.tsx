@@ -1,18 +1,21 @@
 import { Box, Button, TextField } from '@mui/material'
 import React, { ChangeEvent, useEffect, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
-import useLocalStorage from 'react-use-localstorage'
 import { Postagem } from '../../../src/models/Postagem'
 import { getAll, getId, post, put } from '../../../src/service/Service'
 import { Card, FormHelperText, Grid, InputLabel, MenuItem, Select, Typography } from '@material-ui/core';
 import { Tema } from '../../models/Tema';
+import { useSelector } from 'react-redux';
+import { TokenState } from '../../store/tokenReducer'
 
 function CadastroPostagem() {
 
     const history = useNavigate();
     const { id } = useParams<{ id: string }>();
     const [temas, setTemas] = useState<Tema[]>([])
-    const [token, setToken] = useLocalStorage('token');
+    const token = useSelector<TokenState, TokenState['token']>(
+        (state) => state.token
+    )
 
     const [tema, setTema] = useState<Tema>(
         {

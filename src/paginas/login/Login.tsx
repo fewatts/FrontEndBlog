@@ -5,22 +5,22 @@ import React, { ChangeEvent, useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import UsuarioLogin from '../../models/UsuarioLogin';
 import { login } from '../../service/Service';
-import useLocalStorage from 'react-use-localstorage'
+import { useDispatch } from 'react-redux';
+import { addToken } from '../../store/tokens/action';
 
 function Login() {
 
-    const history = useNavigate()
-
-    const [token, setToken] = useLocalStorage('token')
-
+    const history = useNavigate();
+    const [token, setToken] = useState("");
+    const dispatch = useDispatch();
     const [userLogin, setUserLogin] = useState<UsuarioLogin>({
         id: 0,
-        nome: '',
-        usuario: '',
-        foto: '',
-        senha: '',
-        token: ''
-    })
+        nome: "",
+        usuario: "",
+        senha: "",
+        foto: "",
+        token: "",
+    });
 
     function updateModel(event: ChangeEvent<HTMLInputElement>) {
         setUserLogin({
@@ -45,6 +45,7 @@ function Login() {
 
     useEffect(() => {
         if (token !== '') {
+            dispatch(addToken(token));
             history('/home')
         }
     }, [token])

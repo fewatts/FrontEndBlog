@@ -3,15 +3,19 @@ import { Typography, Button, Card, CardContent, CardActions, Grid, CircularProgr
 import { Box } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
 import './ListaTemas.css'
-import useLocalStorage from 'react-use-localstorage';
 import { getAll } from '../../service/Service';
 import { Tema } from '../../models/Tema';
 import DeletarTema from './DeletarTema';
+import { useSelector } from 'react-redux';
+import { TokenState } from '../../store/tokenReducer';
 
 function ListaTemas() {
 
     const [temas, setTemas] = useState<Tema[]>([]);
-    const [token, setToken] = useLocalStorage('token');
+    const token = useSelector<TokenState, TokenState['token']>(
+        (state) => state.token
+    )
+    
     const history = useNavigate();
 
     async function getAllTemas() {

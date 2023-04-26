@@ -3,14 +3,17 @@ import { AppBar, Toolbar, Typography, Button, Card, CardContent, CardActions, Ci
 import { Box } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
 import { Postagem } from '../../models/Postagem';
-import useLocalStorage from 'react-use-localstorage';
 import { getAll } from '../../service/Service';
 import { Tema } from '../../models/Tema';
+import { useSelector } from 'react-redux';
+import { TokenState } from '../../store/tokenReducer';
 
 function ListaPostagens() {
 
     const [postagens, setPostagens] = useState<Postagem[]>([])
-    const [token, setToken] = useLocalStorage('token')
+    const token = useSelector<TokenState, TokenState['token']>(
+        (state) => state.token
+    )
     const navigate = useNavigate()
 
     async function ListaPostagem() {

@@ -8,15 +8,8 @@ import { Link, useNavigate } from 'react-router-dom';
 
 function Home() {
 
-  const [token, setToken] = useLocalStorage('token')
   const navigate = useNavigate()
 
-  useEffect(() => {
-    if (token === '') {
-      navigate('/login')
-
-    }
-  }, [])
 
   function postar() {
     navigate('/cadastrarPostagem')
