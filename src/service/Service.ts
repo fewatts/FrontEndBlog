@@ -7,7 +7,7 @@ export const api = axios.create({
 // ok
 export const login = async (url: string, dados: object, setDados: Function) => {
     const resposta = await api.post(url, dados)
-    setDados(resposta.data.token)
+    setDados(resposta.data)
 }
 
 // ok

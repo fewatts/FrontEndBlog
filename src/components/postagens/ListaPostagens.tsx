@@ -79,6 +79,12 @@ function ListaPostagens() {
                             <Typography variant='body1' component='p'>
                                 <a href={postagem.link} target='_blank'>Set SoundCloud</a>
                             </Typography>
+                            <Typography variant="body2" component="p">
+                                Postado por: {postagem.usuario?.nome}
+                            </Typography>
+                            <Typography variant="body2" component="p">
+                                Data: {Intl.DateTimeFormat('pt-BR', { dateStyle: 'medium', timeStyle: 'medium' }).format(new Date(postagem.data))}
+                            </Typography>
                         </CardContent>
                         <CardActions>
                             <Link to={`/editarPostagem/${postagem.id}`}>

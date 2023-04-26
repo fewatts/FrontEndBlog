@@ -7,6 +7,7 @@ import { Card, FormHelperText, Grid, InputLabel, MenuItem, Select, Typography } 
 import { Tema } from '../../models/Tema';
 import { useSelector } from 'react-redux';
 import { TokenState } from '../../store/tokenReducer'
+import { Usuario } from '../../models/Usuario'
 
 function CadastroPostagem() {
 
@@ -16,6 +17,16 @@ function CadastroPostagem() {
     const token = useSelector<TokenState, TokenState['token']>(
         (state) => state.token
     )
+    const userId = useSelector<TokenState, TokenState['id']>(
+        (state) => state.id
+    )
+    const[usuario, setusuario] = useState<Usuario>({
+        id: +userId,
+        nome:'',
+        usuario:'',
+        senha:'',
+        foto:''
+    })
 
     const [tema, setTema] = useState<Tema>(
         {
@@ -30,7 +41,8 @@ function CadastroPostagem() {
         texto: '',
         data: '',
         link: '',
-        tema: null
+        tema: null,
+        usuario: null
     })
 
     useEffect(() => {
@@ -44,7 +56,8 @@ function CadastroPostagem() {
     useEffect(() => {
         setPostagem({
             ...postagem,
-            tema: tema
+            tema: tema,
+            usuario: usuario
         })
     }, [tema])
 
@@ -92,7 +105,7 @@ function CadastroPostagem() {
                     },
                 });
                 alert('Postagem atualizada com sucesso');
-                history('/postagens')
+                history('/home')
             } catch (error) {
                 alert('Falha ao atualizar postagem');
             }
@@ -104,7 +117,7 @@ function CadastroPostagem() {
                     },
                 });
                 alert('Postagem cadastrada com sucesso');
-                history('/postagens')
+                history('/home')
             } catch (error) {
                 alert('Falha ao cadastrar postagem');
             }

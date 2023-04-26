@@ -6,7 +6,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import UsuarioLogin from '../../models/UsuarioLogin';
 import { login } from '../../service/Service';
 import { useDispatch } from 'react-redux';
-import { addToken } from '../../store/tokens/action';
+import { addId, addToken } from '../../store/tokens/action';
 
 function Login() {
 
@@ -14,6 +14,15 @@ function Login() {
     const [token, setToken] = useState("");
     const dispatch = useDispatch();
     const [userLogin, setUserLogin] = useState<UsuarioLogin>({
+        id: 0,
+        nome: "",
+        usuario: "",
+        senha: "",
+        foto: "",
+        token: "",
+    });
+
+    const [respUserLogin, setRespUserLogin] = useState<UsuarioLogin>({
         id: 0,
         nome: "",
         usuario: "",
@@ -33,9 +42,8 @@ function Login() {
     async function onSubmit(event: ChangeEvent<HTMLFormElement>) {
         event.preventDefault()
         try {
-            await login('/usuarios/logar', userLogin, setToken);
+            await login('/usuarios/logar', userLogin, setRespUserLogin);
             alert('Login efetuado com sucesso!')
-            history('/home')
         } catch (error) {
             console.log(error)
             alert('Usuário ou senha inválidos!')
@@ -44,11 +52,12 @@ function Login() {
     }
 
     useEffect(() => {
-        if (token !== '') {
-            dispatch(addToken(token));
+        if (respUserLogin.token !== '') {
+            dispatch(addToken(respUserLogin.token));
+            dispatch(addId(respUserLogin.id.toString()))
             history('/home')
         }
-    }, [token])
+    }, [respUserLogin.token])
 
     return (
         <>

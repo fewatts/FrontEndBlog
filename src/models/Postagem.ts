@@ -1,4 +1,5 @@
 import { Tema } from "./Tema";
+import { Usuario } from "./Usuario";
 
 export interface Postagem {
   link: string;
@@ -6,5 +7,6 @@ export interface Postagem {
   titulo: string;
   texto: string;
   data: string;
-  tema: Tema | null;
+  tema?: Tema | null;
+  usuario?: Usuario | null;
 }
