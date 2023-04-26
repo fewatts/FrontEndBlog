@@ -51,9 +51,7 @@ function Home() {
               component="h5"
               align="center"
               className='titulo'>
-
-              Poste suas experiências com a música e mixagem aqui!
-
+              Poste seus Sets e experiências com mixagem aqui!
             </Typography>
           </Box>
           <Box display="flex" justifyContent="center">

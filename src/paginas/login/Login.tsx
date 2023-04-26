@@ -10,6 +10,7 @@ import { addId, addToken } from '../../store/tokens/action';
 
 function Login() {
 
+    const [isLoading, setIsLoading] = useState(false)
     const history = useNavigate();
     const [token, setToken] = useState("");
     const dispatch = useDispatch();
@@ -42,9 +43,11 @@ function Login() {
     async function onSubmit(event: ChangeEvent<HTMLFormElement>) {
         event.preventDefault()
         try {
+            setIsLoading(true)
             await login('/usuarios/logar', userLogin, setRespUserLogin);
             alert('Login efetuado com sucesso!')
         } catch (error) {
+            setIsLoading(false)
             console.log(error)
             alert('Usuário ou senha inválidos!')
         }
@@ -92,13 +95,12 @@ function Login() {
                                 label='Senha'
                                 fullWidth />
 
-                            <Button
-                                type='submit'
+                            <Button disabled={isLoading}  type='submit'
                                 size='large'
                                 variant='contained'
                                 className='botaolog'
                                 fullWidth>
-                                Login
+                                {isLoading ? (<span >Carregando...</span>) : ('Login')}
                             </Button>
                         </form>
                     </Box>
