@@ -52,7 +52,7 @@ function Login() {
 
     return (
         <>
-            <Grid container alignItems={'center'} style={{ backgroundColor: 'var(--white)' }}>
+            <Grid container alignItems={'center'}>
                 <Grid xs={6}>
                     <Box display='flex' justifyContent='center'>
                         <form onSubmit={onSubmit}>
@@ -93,7 +93,6 @@ function Login() {
                             </Button>
                         </form>
                     </Box>
-                    <hr />
                     <Typography
                         align='center'
                         variant="body1"

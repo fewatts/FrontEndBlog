@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import './Cadastrousuario.css';
-import { Button, Grid, TextField, Typography } from '@material-ui/core';
+import { Button, Divider, Grid, TextField, Typography } from '@material-ui/core';
 import { Box } from '@mui/material';
 import { ChangeEvent, useState } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
@@ -62,97 +62,93 @@ function CadastroUsuario() {
     }
 
     useEffect(() => {
-        if(usuario.id !== 0){
+        if (usuario.id !== 0) {
             navigate("/login")
         }
     }, [usuario.id])
 
     return (
         <>
-            <Grid container alignItems={'center'} className='containercad'>
+            <Grid container alignItems='center' justifyContent='center' className='background'>
                 <Grid xs={6} className='imgcad'></Grid>
-                <Grid xs={6}>
-                    <Box display='flex' justifyContent='center'>
+                <Grid item xs={6} alignItems='center'>
+                    <Box padding={10}>
                         <form onSubmit={onSubmit}>
-                            <Typography
-                                variant="h5"
+                            <Typography variant="h5"
                                 gutterBottom
                                 color="textPrimary"
                                 component="h5"
                                 align="center"
-                                className='textos1'>
-                                Cadastro
-                            </Typography>
-
+                                className='textos1'>Cadastrar</Typography>
                             <TextField
-                                variant='outlined'
-                                name='nome'
+                                required
                                 value={usuario.nome}
                                 onChange={(event: ChangeEvent<HTMLInputElement>) => updateModel(event)}
-                                label='Nome completo'
+                                variant='outlined'
+                                label='nome'
+                                name='nome'
                                 margin='normal'
                                 fullWidth />
                             <TextField
-                                variant='outlined'
-                                name='usuario'
+                                required
                                 value={usuario.usuario}
                                 onChange={(event: ChangeEvent<HTMLInputElement>) => updateModel(event)}
-                                label='Usuário (endereço de e-mail)'
-                                margin='normal'
-                                fullWidth />
-                            <TextField
                                 variant='outlined'
-                                name='foto'
-                                value={usuario.foto}
-                                onChange={(event: ChangeEvent<HTMLInputElement>) => updateModel(event)}
-                                label='Foto (Endereço URL)'
+                                label='usuario'
+                                name='usuario'
                                 margin='normal'
                                 fullWidth />
                             <TextField
-                                type='password'
-                                name='senha'
+                                required
                                 value={usuario.senha}
                                 onChange={(event: ChangeEvent<HTMLInputElement>) => updateModel(event)}
                                 variant='outlined'
-                                label='Senha'
+                                label='senha'
+                                name='senha'
+                                type='password'
                                 margin='normal'
                                 fullWidth />
                             <TextField
-                                type='password'
-                                name='confirmarSenha'
+                                required
                                 value={confirmarSenha}
                                 onChange={(event: ChangeEvent<HTMLInputElement>) => confirmarSenhaHandle(event)}
                                 variant='outlined'
-                                label='Confirmar Senha'
+                                label='confirmarSenha'
+                                name='confirmarSenha'
                                 margin='normal'
+                                type='password'
                                 fullWidth />
-
-                            <Button
-                                type='submit'
-                                size='large'
-                                variant='contained'
-                                className='botaolog'
-                                fullWidth>
-                                Cadastrar
-                            </Button>
-                            <Box gap={4} marginY={2} >
-                            <Link to='/'>
+                            <Divider />
+                            <Box marginTop={2} textAlign='center'>
                                 <Button
-                                    color='secondary'
                                     type='submit'
                                     size='large'
                                     variant='contained'
                                     className='botaolog'
                                     fullWidth>
-                                    Cancelar
+                                    Cadastrar
                                 </Button>
-                                </Link>
+                                <Box gap={4} marginY={2} >
+                                    <Link to='/'>
+                                        <Button
+                                            color='secondary'
+                                            type='submit'
+                                            size='large'
+                                            variant='contained'
+                                            className='botaolog'
+                                            fullWidth>
+                                            Cancelar
+                                        </Button>
+                                    </Link>
+                                </Box>
                             </Box>
                         </form>
                     </Box>
                 </Grid>
+
             </Grid>
         </>
     );
 }
+
 export default CadastroUsuario;

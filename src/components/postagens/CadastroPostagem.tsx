@@ -122,17 +122,12 @@ function CadastroPostagem() {
                 <Card variant='outlined'>
                     <form onSubmit={onSubmit}>
                         <Box display={'flex'} flexDirection={'column'} gap={3}>
-                            <Typography
-                                variant="h5"
+                        <Typography variant="h5"
                                 gutterBottom
                                 color="textPrimary"
                                 component="h5"
                                 align="center"
-                                
-                            >
-                                <strong>{postagem.id !== 0 ? 'Editar postagem' : 'Cadastrar postagem'}</strong>
-                            </Typography>
-
+                                className='textos1'><strong>{postagem.id !== 0 ? 'Editar postagem' : 'Cadastrar postagem'}</strong></Typography>                             
                             <TextField
                                 label='Título'
                                 name='titulo'
