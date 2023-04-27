@@ -6,6 +6,7 @@ import { deleteId, getId } from '../../service/Service';
 import { Postagem } from '../../models/Postagem';
 import { useSelector } from 'react-redux';
 import { TokenState } from '../../store/tokenReducer';
+import { toast } from 'react-toastify';
 
 function DeletarTema() {
 
@@ -35,14 +36,33 @@ function DeletarTema() {
 
     useEffect(() => {
         if (token === '') {
-            alert('Não autorizado!');
+            toast.error('Não autorizado!', {
+                position: "top-center",
+                autoClose: 4000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+            });
+
             history('/login');
         }
     }, []);
 
     function sim() {
-        alert('Postagem excluída!')
-        history('/postagens')
+        toast.success('Postagem excluída!', {
+            position: "top-center",
+            autoClose: 4000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+        });
+        history('/home')
         deleteId(`/postagens/${id}`, {
             headers: {
                 'Authorization': token

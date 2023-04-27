@@ -6,6 +6,7 @@ import { Tema } from '../../models/Tema';
 import { deleteId, getId } from '../../service/Service';
 import { useSelector } from 'react-redux';
 import { TokenState } from '../../store/tokenReducer';
+import { toast } from 'react-toastify';
 
 function DeletarTema() {
 
@@ -13,7 +14,7 @@ function DeletarTema() {
     const token = useSelector<TokenState, TokenState['token']>(
         (state) => state.token
     )
-    
+
 
     const { id } = useParams<{ id: string }>()
 
@@ -35,13 +36,31 @@ function DeletarTema() {
 
     useEffect(() => {
         if (token === '') {
-            alert('Não autorizado!');
+            toast.error('Não autorizado!', {
+                position: "top-center",
+                autoClose: 4000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+            });
             history('/login');
         }
     }, []);
 
     function sim() {
-        alert('Tema excluído!')
+        toast.success('Tema excluído!', {
+            position: "top-center",
+            autoClose: 4000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+        });
         history('/temas')
         deleteId(`/temas/${id}`, {
             headers: {

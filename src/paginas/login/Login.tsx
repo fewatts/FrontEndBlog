@@ -1,12 +1,12 @@
 import './Login.css';
-import { Button, Grid, TextField, Typography } from '@material-ui/core';
-import { Box } from '@mui/material';
+import { Button, Box, Grid, TextField, Typography } from '@mui/material';
 import React, { ChangeEvent, useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import UsuarioLogin from '../../models/UsuarioLogin';
 import { login } from '../../service/Service';
 import { useDispatch } from 'react-redux';
 import { addId, addToken } from '../../store/tokens/action';
+import { toast } from 'react-toastify';
 
 function Login() {
 
@@ -45,11 +45,29 @@ function Login() {
         try {
             setIsLoading(true)
             await login('/usuarios/logar', userLogin, setRespUserLogin);
-            alert('Login efetuado com sucesso!')
+            toast.success('Login efetuado!', {
+                position: "top-center",
+                autoClose: 4000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+            });
         } catch (error) {
             setIsLoading(false)
             console.log(error)
-            alert('Usuário ou senha inválidos!')
+            toast.error('Usuário ou senha inválidos!', {
+                position: "top-center",
+                autoClose: 4000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+            });
         }
 
     }
@@ -66,7 +84,7 @@ function Login() {
         <>
             <Grid container alignItems={'center'}>
                 <Grid xs={6}>
-                    <Box display='flex' justifyContent='center'>
+                    <Box display='flex' justifyContent='center'  gap={6}>
                         <form onSubmit={onSubmit}>
                             <Typography
                                 variant="h5"
@@ -89,18 +107,20 @@ function Login() {
                             <TextField
                                 type='password'
                                 name='senha'
+                                error={userLogin.senha.length < 8 && userLogin.senha.length > 0}
+                                helperText={userLogin.senha.length < 8 && userLogin.senha.length > 0 ? 'Senha inválida': ''}
                                 value={userLogin.senha}
                                 onChange={(event: ChangeEvent<HTMLInputElement>) => updateModel(event)}
                                 variant='outlined'
                                 label='Senha'
                                 fullWidth />
 
-                            <Button disabled={isLoading}  type='submit'
+                            <Button disabled={isLoading} type='submit'
                                 size='large'
                                 variant='contained'
                                 className='botaolog'
                                 fullWidth>
-                                {isLoading ? (<span >Carregando...</span>) : ('Login')}
+                                {isLoading ? (<span >...</span>) : ('Login')}
                             </Button>
                         </form>
                     </Box>

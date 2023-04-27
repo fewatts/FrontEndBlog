@@ -7,6 +7,7 @@ import useLocalStorage from 'react-use-localstorage';
 import { useSelector, useDispatch } from 'react-redux';
 import { TokenState } from '../../../store/tokenReducer';
 import { addToken } from '../../../store/tokens/action';
+import { toast } from 'react-toastify';
 
 const pages = ['Home', 'Postagens', 'Temas', 'Cadastrar Temas'];
 
@@ -41,8 +42,17 @@ function NavBar() {
   };
 
   function goLogout() {
+    toast.success('Usuário deslogado', {
+      position: "top-center",
+      autoClose: 4000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
     dispatch(addToken(''))
-    alert('Usuário deslogado')
     history('/login')
   }
 
@@ -55,7 +65,7 @@ function NavBar() {
           <Box className='cursor'>
             <Link to='/home'>
               <Typography variant="h5" color="inherit">
-                <strong>Blog DJ's</strong>
+                <strong>DJ's</strong>
               </Typography>
             </Link>
           </Box>

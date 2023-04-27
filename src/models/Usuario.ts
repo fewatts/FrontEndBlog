@@ -1,6 +1,6 @@
 import { Postagem } from "./Postagem";
 
-export interface Usuario{
+export interface Usuario {
     id: number;
     nome: string;
     usuario: string;

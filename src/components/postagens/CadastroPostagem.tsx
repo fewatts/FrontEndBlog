@@ -8,6 +8,7 @@ import { Tema } from '../../models/Tema';
 import { useSelector } from 'react-redux';
 import { TokenState } from '../../store/tokenReducer'
 import { Usuario } from '../../models/Usuario'
+import { toast } from 'react-toastify'
 
 function CadastroPostagem() {
 
@@ -20,12 +21,12 @@ function CadastroPostagem() {
     const userId = useSelector<TokenState, TokenState['id']>(
         (state) => state.id
     )
-    const[usuario, setusuario] = useState<Usuario>({
+    const [usuario, setusuario] = useState<Usuario>({
         id: +userId,
-        nome:'',
-        usuario:'',
-        senha:'',
-        foto:''
+        nome: '',
+        usuario: '',
+        senha: '',
+        foto: ''
     })
 
     const [tema, setTema] = useState<Tema>(
@@ -47,7 +48,16 @@ function CadastroPostagem() {
 
     useEffect(() => {
         if (token === '') {
-            alert("Efetue o login")
+            toast.warn('Efetue o login!', {
+                position: "top-center",
+                autoClose: 4000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+            });
             history("/login")
 
         }
@@ -104,10 +114,28 @@ function CadastroPostagem() {
                         Authorization: token,
                     },
                 });
-                alert('Postagem atualizada com sucesso');
+                toast.success('Postagem atualizada!', {
+                    position: "top-center",
+                    autoClose: 4000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "colored",
+                });
                 history('/home')
             } catch (error) {
-                alert('Falha ao atualizar postagem');
+                toast.error('Falha ao atualizar postagem', {
+                    position: "top-center",
+                    autoClose: 4000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "colored",
+                });
             }
         } else {
             try {
@@ -116,10 +144,28 @@ function CadastroPostagem() {
                         Authorization: token,
                     },
                 });
-                alert('Postagem cadastrada com sucesso');
+                toast.success('Postagem cadastrada!', {
+                    position: "top-center",
+                    autoClose: 4000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "colored",
+                });
                 history('/home')
             } catch (error) {
-                alert('Falha ao cadastrar postagem');
+                toast.error('Falha ao cadastrar postagem...', {
+                    position: "top-center",
+                    autoClose: 4000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "colored",
+                });
             }
         }
     }
@@ -135,12 +181,12 @@ function CadastroPostagem() {
                 <Card variant='outlined'>
                     <form onSubmit={onSubmit}>
                         <Box display={'flex'} flexDirection={'column'} gap={3}>
-                        <Typography variant="h5"
+                            <Typography variant="h5"
                                 gutterBottom
                                 color="textPrimary"
                                 component="h5"
                                 align="center"
-                                className='textos1'><strong>{postagem.id !== 0 ? 'Editar postagem' : 'Cadastrar postagem'}</strong></Typography>                             
+                                className='textos1'><strong>{postagem.id !== 0 ? 'Editar postagem' : 'Cadastrar postagem'}</strong></Typography>
                             <TextField
                                 label='Título'
                                 name='titulo'
@@ -162,7 +208,7 @@ function CadastroPostagem() {
                                 onChange={(event: ChangeEvent<HTMLInputElement>) => updateModel(event)}
                             />
                             <InputLabel id="demo-simple-select-helper-label"><strong>Escolha um tema:</strong></InputLabel>
-                            <Select 
+                            <Select
                                 labelId="demo-simple-select-helper-label"
                                 id="demo-simple-select-helper"
                                 onChange={(event) => getId(`/temas/${event.target.value}`, setTema, {
@@ -176,9 +222,9 @@ function CadastroPostagem() {
                                     ))
                                 }
                             </Select>
-                            
+
                             <Button
-                                disabled={postagem.texto.length < 10}
+                                disabled={postagem.texto.length < 10 && tema.id === 0}
                                 type='submit'
                                 size='medium'
                                 variant='contained'

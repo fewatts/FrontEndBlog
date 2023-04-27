@@ -7,6 +7,7 @@ import { getAll } from '../../service/Service';
 import { Tema } from '../../models/Tema';
 import { useSelector } from 'react-redux';
 import { TokenState } from '../../store/tokenReducer';
+import { toast } from 'react-toastify';
 
 function ListaPostagens() {
 
@@ -44,7 +45,16 @@ function ListaPostagens() {
 
     useEffect(() => {
         if (token === '') {
-            alert('Não autorizado!')
+            toast.error('Não autorizado!', {
+                position: "top-center",
+                autoClose: 4000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+            });
             navigate('/login')
         }
     }, [])

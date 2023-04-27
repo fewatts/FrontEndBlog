@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 import { Usuario } from '../../models/Usuario';
 import { cadastrarUsuario } from '../../service/Service';
 import './Cadastrousuario.css';
+import { toast } from 'react-toastify';
 
 function CadastroUsuario() {
 
@@ -47,12 +48,39 @@ function CadastroUsuario() {
         if (confirmarSenha == usuario.senha) {
             try {
                 await cadastrarUsuario('/usuarios/cadastrar', usuario, setUsuarioResult)
-                alert('Usuário cadastrado!')
+                toast.success('Usuário cadastrado!', {
+                    position: "top-center",
+                    autoClose: 4000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "colored",
+                });
             } catch (error) {
-                alert('Verifique o formulário corretamente')
+                toast.warn('Preencha o formulário corretamente!', {
+                    position: "top-center",
+                    autoClose: 4000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "colored",
+                });
             }
         } else {
-            alert('As senhas estão diferentes')
+            toast.error('As senhas estão diferentes', {
+                position: "top-center",
+                autoClose: 4000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+            });
             setConfirmarSenha('')
             setUsuario({
                 ...usuario,
@@ -69,7 +97,7 @@ function CadastroUsuario() {
 
     return (
         <>
-            <Grid container alignItems='center' justifyContent='center' className='background'>
+            <Grid container alignItems='center' justifyContent='center'>
                 <Grid xs={6} className='imgcad'></Grid>
                 <Grid item xs={6} alignItems='center'>
                     <Box padding={10}>
@@ -90,6 +118,14 @@ function CadastroUsuario() {
                                 margin='normal'
                                 fullWidth />
                             <TextField
+                                value={usuario.foto}
+                                onChange={(event: ChangeEvent<HTMLInputElement>) => updateModel(event)}
+                                variant='outlined'
+                                label='URL foto'
+                                name='foto'
+                                margin='normal'
+                                fullWidth />
+                            <TextField
                                 required
                                 value={usuario.usuario}
                                 onChange={(event: ChangeEvent<HTMLInputElement>) => updateModel(event)}
@@ -100,6 +136,8 @@ function CadastroUsuario() {
                                 fullWidth />
                             <TextField
                                 required
+                                error={usuario.senha.length < 8 && usuario.senha.length > 0}
+                                helperText={usuario.senha.length < 8 && usuario.senha.length > 0 ? 'Senha inválida': ''}
                                 value={usuario.senha}
                                 onChange={(event: ChangeEvent<HTMLInputElement>) => updateModel(event)}
                                 variant='outlined'

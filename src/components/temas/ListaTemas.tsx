@@ -8,6 +8,7 @@ import { Tema } from '../../models/Tema';
 import DeletarTema from './DeletarTema';
 import { useSelector } from 'react-redux';
 import { TokenState } from '../../store/tokenReducer';
+import { toast } from 'react-toastify';
 
 function ListaTemas() {
 
@@ -15,7 +16,7 @@ function ListaTemas() {
     const token = useSelector<TokenState, TokenState['token']>(
         (state) => state.token
     )
-    
+
     const history = useNavigate();
 
     async function getAllTemas() {
@@ -32,7 +33,16 @@ function ListaTemas() {
 
     useEffect(() => {
         if (token === '') {
-            alert('Não autorizado!');
+            toast.error('Não autorizado!', {
+                position: "top-center",
+                autoClose: 4000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+            });
             history('/login');
         }
     }, [token]);

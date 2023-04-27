@@ -38,7 +38,6 @@ export const put = async (url: string, dados: object, setDados: Function, header
     setDados(resposta.data)
 }
 
-export const deleteId = async(url: any, headers: any) => {
+export const deleteId = async (url: any, headers: any) => {
     await api.delete(url, headers)
-  }
-  
+}

@@ -6,13 +6,14 @@ import { getId, post, put } from '../../../src/service/Service'
 import { Card, Grid, Typography } from '@material-ui/core';
 import { useSelector } from 'react-redux'
 import { TokenState } from '../../store/tokenReducer'
+import { toast } from 'react-toastify'
 
 function CadastroTema() {
 
   const history = useNavigate();
   const token = useSelector<TokenState, TokenState['token']>(
     (state) => state.token
-)
+  )
 
   const { id } = useParams<{ id: string }>()
 
@@ -44,7 +45,16 @@ function CadastroTema() {
 
   useEffect(() => {
     if (token === '') {
-      alert('Não autorizado!');
+      toast.error('Não autorizado!', {
+        position: "top-center",
+        autoClose: 4000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
       history('/login');
     }
   }, []);
@@ -59,10 +69,28 @@ function CadastroTema() {
             Authorization: token,
           },
         });
-        alert('Tema atualizado com sucesso');
+        toast.success('Tema atualizado!', {
+          position: "top-center",
+          autoClose: 4000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        });
         history('/temas')
       } catch (error) {
-        alert('ERROR');
+        toast.error('Falha ao atualizar tema...', {
+          position: "top-center",
+          autoClose: 4000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        });
       }
     } else {
       try {
@@ -71,10 +99,28 @@ function CadastroTema() {
             Authorization: token,
           },
         });
-        alert('Tema cadastrado com sucesso');
+        toast.success('Tema cadastrado!', {
+          position: "top-center",
+          autoClose: 4000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        });
         history('/temas')
       } catch (error) {
-        alert('ERROR');
+        toast.error('Erro ao cadastrar tema...', {
+          position: "top-center",
+          autoClose: 4000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        });
       }
     }
   }
