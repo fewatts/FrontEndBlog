@@ -3,12 +3,11 @@ import { AppBar, Toolbar, Typography, Button } from '@material-ui/core';
 import { Box } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
 import './NavBar.css';
-import useLocalStorage from 'react-use-localstorage';
 import { useSelector, useDispatch } from 'react-redux';
 import { TokenState } from '../../../store/tokenReducer';
 import { addToken } from '../../../store/tokens/action';
 import { toast } from 'react-toastify';
-
+// toast.info()
 
 function NavBar() {
 
