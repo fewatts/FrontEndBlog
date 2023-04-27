@@ -10,6 +10,7 @@
     font-weight: bold !important;
     color:white !important;
     font-weight: bold !important; 
+    border-radius: 11px 11px 11px 11px !important; 
     background-color: var(--blue) !important; 
 }
 

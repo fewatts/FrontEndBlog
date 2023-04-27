@@ -131,9 +131,9 @@ function CadastroTema() {
         spacing={0}
         direction="column"
         alignItems="center"
-        justify="center"
-        style={{ minHeight: '80vh' }}>
-        <Card variant='outlined'>
+        justifyContent="center"
+        style={{ minHeight: '100vh', backgroundColor: 'var(--white)'}}>
+        <Card variant='elevation' style={{ boxSizing: 'content-box', boxShadow: '18px 6px 10px 0px rgba(0,0,0,0.52)', borderRadius:'11px 11px 11px 11px' }}>
           <form onSubmit={onSubmit}>
             <Box display={'flex'} flexDirection={'column'} gap={3}>
               <Typography

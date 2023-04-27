@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux';
 import { TokenState } from '../../store/tokenReducer';
 import { toast } from 'react-toastify';
 
+
 function DeletarTema() {
 
     const history = useNavigate();
@@ -73,7 +74,6 @@ function DeletarTema() {
     function nao() {
         history('/postagens')
     }
-
 
     return (
         <>

@@ -9,37 +9,14 @@ import { TokenState } from '../../../store/tokenReducer';
 import { addToken } from '../../../store/tokens/action';
 import { toast } from 'react-toastify';
 
-const pages = ['Home', 'Postagens', 'Temas', 'Cadastrar Temas'];
-
-const pageslinks = ['/home', '/postagens', '/temas', '/cadastro-temas'];
-
-const settings = ['Cadastro', 'Logout'];
 
 function NavBar() {
-
-  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
-  const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
 
   const token = useSelector<TokenState, TokenState['token']>(
     (state) => state.token
   )
   const dispatch = useDispatch();
   const history = useNavigate()
-
-  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElNav(event.currentTarget);
-  };
-  const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElUser(event.currentTarget);
-  };
-
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
-
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
 
   function goLogout() {
     toast.success('Usuário deslogado', {

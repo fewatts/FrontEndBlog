@@ -3,11 +3,12 @@ import { AppBar, Toolbar, Typography, Button, Card, CardContent, CardActions, Ci
 import { Box } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
 import { Postagem } from '../../models/Postagem';
-import { getAll } from '../../service/Service';
+import { getAll, getId } from '../../service/Service';
 import { Tema } from '../../models/Tema';
 import { useSelector } from 'react-redux';
 import { TokenState } from '../../store/tokenReducer';
 import { toast } from 'react-toastify';
+import { Usuario } from '../../models/Usuario';
 
 function ListaPostagens() {
 
@@ -16,6 +17,16 @@ function ListaPostagens() {
         (state) => state.token
     )
     const navigate = useNavigate()
+    const [temas, setTemas] = useState<Tema[]>([])
+
+
+    async function getAllTemas() {
+        await getAll('/temas', setTemas, {
+            headers: {
+                Authorization: token
+            }
+        })
+    }
 
     async function ListaPostagem() {
         await getAll('/postagens', setPostagens, {
@@ -28,16 +39,6 @@ function ListaPostagens() {
     useEffect(() => {
         ListaPostagem()
     }, [])
-
-    const [temas, setTemas] = useState<Tema[]>([])
-
-    async function getAllTemas() {
-        await getAll('/temas', setTemas, {
-            headers: {
-                Authorization: token
-            }
-        })
-    }
 
     useEffect(() => {
         getAllTemas()
@@ -66,8 +67,8 @@ function ListaPostagens() {
                     spacing={0}
                     direction="column"
                     alignItems="center"
-                    justify="center"
-                    style={{ minHeight: '30vh' }}>
+                    justifyContent="center"
+                    style={{ minHeight: '60vh' }}>
                     <Box sx={{ display: 'flex' }} >
                         <CircularProgress />
                     </Box>
@@ -96,15 +97,6 @@ function ListaPostagens() {
                                 Data: {Intl.DateTimeFormat('pt-BR', { dateStyle: 'medium', timeStyle: 'medium' }).format(new Date(postagem.data))}
                             </Typography>
                         </CardContent>
-                        <CardActions>
-                            <Link to={`/editarPostagem/${postagem.id}`}>
-                                <Button variant='contained' style={{ backgroundColor: 'var(--blue)' }} size='small' className='bottem'>Editar</Button>
-                            </Link>
-                            <Link to={`/deletarPostagem/${postagem.id}`}>
-                                <Button color='secondary' style={{ backgroundColor: 'var(--red)' }} variant='contained' size='small'>Deletar</Button>
-
-                            </Link>
-                        </CardActions>
                     </Card>
                 </Box>
             ))}
