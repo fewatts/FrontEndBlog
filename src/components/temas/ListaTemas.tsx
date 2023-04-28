@@ -55,7 +55,7 @@ function ListaTemas() {
                     spacing={0}
                     direction="column"
                     alignItems="center"
-                    justify="center"
+                    justifyContent="center"
                     style={{ minHeight: '30vh' }}>
                     <Box sx={{ display: 'flex' }} flexDirection={'column'} alignSelf={'center'}>
                         <CircularProgress />

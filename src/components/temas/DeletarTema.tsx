@@ -3,10 +3,11 @@ import { Card, CardActions, CardContent, Button, Typography, Link } from '@mater
 import { Box } from '@mui/material';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Tema } from '../../models/Tema';
-import { deleteId, getId } from '../../service/Service';
+import { deleteId, getAll, getId } from '../../service/Service';
 import { useSelector } from 'react-redux';
 import { TokenState } from '../../store/tokenReducer';
 import { toast } from 'react-toastify';
+import { Postagem } from '../../models/Postagem';
 
 function DeletarTema() {
 
@@ -15,10 +16,37 @@ function DeletarTema() {
         (state) => state.token
     )
 
+    const [tema, setTema] = useState<Tema>({
+            id: 0,
+            descricao: ''
+        }
+    )
+
+    const [postagem, setPostagem] = useState<Postagem>({
+        id: 0,
+        titulo: '',
+        texto: '',
+        data: '',
+        link: '',
+        tema: null,
+        usuario: null
+    })
+
+    async function ListaPostagem() {
+        await getAll('/postagens', setPostagem, {
+            headers: {
+                Authorization: token
+            }
+        })
+    }
+
+    useEffect(() => {
+        ListaPostagem()
+    }, [])
+
 
     const { id } = useParams<{ id: string }>()
 
-    const [tema, setTema] = useState<Tema>();
 
     async function getTemaById(id: string) {
         await getId(`/temas/${id}`, setTema, {
@@ -80,16 +108,23 @@ function DeletarTema() {
                 <Card variant='outlined'>
                     <CardContent>
                         <Typography color="inherit" gutterBottom>
-                            Excluir tema?
+                            Excluir tema? 
                         </Typography>
                         <Typography variant='h5' component='h2'>
                             {tema?.descricao}
                         </Typography>
                     </CardContent>
-                    <CardActions>
-                        <Button onClick={sim} variant='contained' style={{ backgroundColor: 'var(--blue)' }} size='small' className='bottem'>Sim</Button>
-                        <Button onClick={nao} color='secondary' style={{ backgroundColor: 'var(--red)' }} variant='contained' size='small'>Não</Button>
-                    </CardActions>
+                    {tema?.postagem?.length === 0 && (
+                        <CardActions>
+                            <Button onClick={sim} variant='contained' style={{ backgroundColor: 'var(--blue)' }} size='small' className='bottem'>Sim</Button>
+                            <Button onClick={nao} color='secondary' style={{ backgroundColor: 'var(--red)' }} variant='contained' size='small'>Não</Button>
+                        </CardActions>
+                    )}
+                    <CardContent>
+                        <Typography variant='h5' component='h2'>
+                            {tema?.postagem?.length === 0 ? '' : 'Só temas sem postagens podem ser apagados...'}
+                        </Typography>
+                    </CardContent>
                 </Card>
             </Box>
         </>
