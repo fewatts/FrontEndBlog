@@ -159,26 +159,28 @@ function CadastroUsuario() {
                                 fullWidth />
                             <Divider />
                             <Box marginTop={2} textAlign='center'>
-                                <Link to='/'>
-                                    <Button
-                                        type='submit'
-                                        size='large'
-                                        variant='contained'
-                                        className='botaolog'
-                                        fullWidth>
-                                        Cadastrar
-                                    </Button>
-                                </Link>
+
+                                <Button
+                                    type='submit'
+                                    size='large'
+                                    variant='contained'
+                                    className='botaolog'
+                                    fullWidth>
+                                    Cadastrar
+                                </Button>
+
                                 <Box gap={4} marginY={2} >
-                                    <Button
-                                        color='secondary'
-                                        type='submit'
-                                        size='large'
-                                        variant='contained'
-                                        className='botaolog'
-                                        fullWidth>
-                                        Cancelar
-                                    </Button>
+                                    <Link to='/'>
+                                        <Button
+                                            color='secondary'
+                                            type='submit'
+                                            size='large'
+                                            variant='contained'
+                                            className='botaolog'
+                                            fullWidth>
+                                            Cancelar
+                                        </Button>
+                                    </Link>
                                 </Box>
                             </Box>
                         </form>
