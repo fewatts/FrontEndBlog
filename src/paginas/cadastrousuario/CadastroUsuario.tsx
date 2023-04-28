@@ -14,6 +14,8 @@ function CadastroUsuario() {
 
     const navigate = useNavigate();
 
+    const [isLoading, setIsLoading] = useState(false)
+
     const [usuario, setUsuario] = useState<Usuario>({
         id: 0,
         nome: '',
@@ -47,6 +49,7 @@ function CadastroUsuario() {
         event.preventDefault()
         if (confirmarSenha == usuario.senha) {
             try {
+                setIsLoading(true)
                 await cadastrarUsuario('/usuarios/cadastrar', usuario, setUsuarioResult)
                 toast.success('Usuário cadastrado!', {
                     position: "top-center",
@@ -60,6 +63,7 @@ function CadastroUsuario() {
                 });
                 navigate("/login")
             } catch (error) {
+                setIsLoading(false)
                 toast.warn('Preencha o formulário corretamente!', {
                     position: "top-center",
                     autoClose: 4000,
@@ -165,8 +169,9 @@ function CadastroUsuario() {
                                     size='large'
                                     variant='contained'
                                     className='botaolog'
+                                    disabled={isLoading}
                                     fullWidth>
-                                    Cadastrar
+                                    {isLoading ? (<span >Carregando...</span>) : ('Cadastrar')}
                                 </Button>
 
                                 <Box gap={4} marginY={2} >
