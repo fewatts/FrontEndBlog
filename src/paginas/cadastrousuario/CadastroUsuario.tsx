@@ -58,6 +58,7 @@ function CadastroUsuario() {
                     progress: undefined,
                     theme: "colored",
                 });
+                navigate("/login")
             } catch (error) {
                 toast.warn('Preencha o formulário corretamente!', {
                     position: "top-center",
@@ -169,17 +170,15 @@ function CadastroUsuario() {
                                     </Button>
                                 </Link>
                                 <Box gap={4} marginY={2} >
-                                    <Link to='/'>
-                                        <Button
-                                            color='secondary'
-                                            type='submit'
-                                            size='large'
-                                            variant='contained'
-                                            className='botaolog'
-                                            fullWidth>
-                                            Cancelar
-                                        </Button>
-                                    </Link>
+                                    <Button
+                                        color='secondary'
+                                        type='submit'
+                                        size='large'
+                                        variant='contained'
+                                        className='botaolog'
+                                        fullWidth>
+                                        Cancelar
+                                    </Button>
                                 </Box>
                             </Box>
                         </form>
