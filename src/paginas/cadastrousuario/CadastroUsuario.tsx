@@ -137,7 +137,7 @@ function CadastroUsuario() {
                             <TextField
                                 required
                                 error={usuario.senha.length < 8 && usuario.senha.length > 0}
-                                helperText={usuario.senha.length < 8 && usuario.senha.length > 0 ? 'Senha inválida': ''}
+                                helperText={usuario.senha.length < 8 && usuario.senha.length > 0 ? 'Senha inválida' : ''}
                                 value={usuario.senha}
                                 onChange={(event: ChangeEvent<HTMLInputElement>) => updateModel(event)}
                                 variant='outlined'
@@ -158,14 +158,16 @@ function CadastroUsuario() {
                                 fullWidth />
                             <Divider />
                             <Box marginTop={2} textAlign='center'>
-                                <Button
-                                    type='submit'
-                                    size='large'
-                                    variant='contained'
-                                    className='botaolog'
-                                    fullWidth>
-                                    Cadastrar
-                                </Button>
+                                <Link to='/'>
+                                    <Button
+                                        type='submit'
+                                        size='large'
+                                        variant='contained'
+                                        className='botaolog'
+                                        fullWidth>
+                                        Cadastrar
+                                    </Button>
+                                </Link>
                                 <Box gap={4} marginY={2} >
                                     <Link to='/'>
                                         <Button
